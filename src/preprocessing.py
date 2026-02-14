@@ -6,5 +6,10 @@ allowed --> numbers, letters, +, #, :, -, \, . --> thats it, everything else rem
 from typing import List
 
 
-# def normalize(resume: str) -> List[str]:
-    
+def normalize(resume: str) -> str:
+    acceptedSymbols = ["+", "#", ":", "-", "\"", "."," ", "@", "/", "\n"]
+    resume = resume.lower()
+    for char in resume:
+        if not char.isalnum() and char not in acceptedSymbols:
+            resume = resume.replace(char, '')
+    return resume
